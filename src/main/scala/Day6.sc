@@ -30,10 +30,22 @@ def part1(blocks:List[Int]):Int = {
   lists.length-1
 }
 
+def part2(blocks:List[Int]):Int = {
+  var lists = mutable.MutableList[List[Int]](blocks)
+  while (lists.distinct.length == lists.length){
+    val currentBlock = lists.takeRight(1).head
+    var newList = updateList(currentBlock)
+    //    println("newlist is " + newList.mkString(","))
+    lists = lists += newList
+
+  }
+  println(lists.indexOf(lists.takeRight(1).head))
+  lists.length-1
+}
 def splitRow(row: String): List[Int] = row.split("\\s+").map(x => x.trim.toInt).toList
 
 val firstInput = List(0,2,7,0)
 val filename = "C:\\dev\\advent\\src\\main\\scala\\Day6Input.txt"
 val input = Source.fromFile(filename).getLines.mkString
 val split = splitRow(input)
-part1(split)
+part2(split)
