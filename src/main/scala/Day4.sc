@@ -1,3 +1,5 @@
+import scala.io.Source
+
 val filename = "C:\\code\\Advent\\src\\main\\scala\\Day4Input.txt"
 
 def splitRow(row: String) = row.split("\\s+").map(x => x.trim)
